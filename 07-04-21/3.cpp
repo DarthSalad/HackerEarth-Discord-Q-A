@@ -10,14 +10,11 @@ typedef vector<string> vs;
 
 void solve(vi a, ll b){
     for(int i = 0; i < a.size(); i++){
-        for(int j = 0; j < a.size(); j++){
-            while(a[i] != a[j]){
-                if(a[i] + a[j] == b){
-                    cout << "true" << endl;
-                    break;
-                }
-            }
-        }
+        int l = b - a[i];
+        if(count(a.begin(), a.end(), l) != 0) {
+            cout << "true" << endl;
+            break;
+        } 
     }
 }
 
@@ -25,10 +22,9 @@ int main() {
     vi a;
     ll t, n, x;
     cin >> t;
-    while(t!= 0){
+    while(t--){
         cin >> x;
         a.pb(x);
-        t--;
     }
     cin >> n;
     sort(a.begin(), a.end());
