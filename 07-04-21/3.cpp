@@ -9,13 +9,24 @@ typedef vector<ll> vi;
 typedef vector<string> vs;
 
 void solve(vi a, ll b){
-    for(int i = 0; i < a.size(); i++){
-        int l = b - a[i];
-        if(count(a.begin(), a.end(), l) != 0) {
-            cout << "true" << endl;
+    int j = 0;
+    ll l = 0, r = a.size() - 1;
+    if(a.size()==0 || a.size()==1) {j = 0;}
+    while(l < r){
+        ll sum = a[l] + a[r];
+        if(sum == b){
+            j = 1;
             break;
-        } 
+        }
+        else if(sum < b){
+            l++;
+        }
+        else{
+            r--;
+        }
     }
+    if(j == 1) {cout << "true" << endl;}
+    else {cout << "false" << endl;}
 }
 
 int main() {
